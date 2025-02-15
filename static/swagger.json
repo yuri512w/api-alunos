@@ -1,0 +1,62 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "API de Cadastro de Alunos",
+        "description": "API para cadastrar e listar alunos",
+        "version": "1.0.0"
+    },
+    "host": "127.0.0.1:5000",
+    "schemes": ["http"],
+    "paths": {
+        "/alunos": {
+            "get": {
+                "summary": "Listar alunos",
+                "description": "Retorna todos os alunos cadastrados",
+                "responses": {
+                    "200": {
+                        "description": "Lista de alunos",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {"type": "integer"},
+                                    "nome": {"type": "string"}
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Cadastrar aluno",
+                "description": "Adiciona um novo aluno ao banco de dados",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "nome": {"type": "string"}
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Aluno cadastrado",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "id": {"type": "integer"},
+                                "nome": {"type": "string"}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
